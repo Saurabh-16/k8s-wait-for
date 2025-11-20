@@ -10,6 +10,7 @@ test_wait_for_no_retries() {
 }
 
 test_wait_for_one_retry() {
+    sleep 60
     export KUBECTL_TRACKER=$(pwd)/resources/kubectl-tracker
     rm -f $KUBECTL_TRACKER
     PATH=$(pwd)/resources:$PATH
