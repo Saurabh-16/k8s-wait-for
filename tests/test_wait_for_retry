@@ -7,6 +7,7 @@ test_wait_for_no_retries() {
     ../wait_for.sh job test-job
 
     assert "test $? -eq 1" "The wait_for job should not have retried and should have given exit code 1"
+    echo "Reached for no-retries test"
 }
 
 test_wait_for_one_retry() {
@@ -19,6 +20,7 @@ test_wait_for_one_retry() {
     ../wait_for.sh job test-job
 
     assert "test $? -eq 0" "The wait_for job should have retried once and given exit code 0"
+    echo "Reached for one retry test"
 }
 
 teardown() {
