@@ -1,4 +1,5 @@
 test_wait_for_no_retries() {
+    set +e
     export KUBECTL_TRACKER=$(pwd)/resources/kubectl-tracker
     rm -f $KUBECTL_TRACKER
     PATH=$(pwd)/resources:$PATH
@@ -7,10 +8,11 @@ test_wait_for_no_retries() {
      echo "Started executing script"
     ../wait_for.sh job test-job
      echo "script completed execution"
+     set -e
 
     assert "test $? -eq 1" "The wait_for job should not have retried and should have given exit code 1"
     echo "Reached for no-retries test"
- 
+
 }
 
 test_wait_for_one_retry() {
