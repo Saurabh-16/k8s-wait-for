@@ -7,10 +7,11 @@ test_wait_for_no_retries() {
 
      echo "Started executing script"
     ../wait_for.sh job test-job
+     exit_code=$?
      echo "script completed execution"
      set -e
 
-    assert "test $? -eq 1" "The wait_for job should not have retried and should have given exit code 1"
+    assert "test $exit_code -eq 1" "The wait_for job should not have retried and should have given exit code 1"
     echo "Reached for no-retries test"
 
 }
